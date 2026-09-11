@@ -10,7 +10,7 @@ function Property() {
   const [selectedData,setSelectedDAta]=useState([])
   
  async function propertyHandle(){
-  let response=await fetch(`http://localhost:3000/property/selectedproperty?city=${city}&price=${price}&bhk=${bhk}`)
+  let response=await fetch(`https://gharvyapar.onrender.com/property/selectedproperty?city=${city}&price=${price}&bhk=${bhk}`)
   let data=await response.json()
   setSelectedDAta(data)
   
