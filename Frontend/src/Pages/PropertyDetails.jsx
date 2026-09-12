@@ -6,7 +6,7 @@ import PropertyDetailsCard from "../Components/Cards/PropertyDetailsCard"
 
 
 function PropertyDetails() {
-    const propertydata=useContext(PropertyContext)
+    const {property:propertydata,loading}=useContext(PropertyContext)
     console.log(propertydata)
     let {propertyId}=useParams()
     let property=propertydata.filter((property)=>{

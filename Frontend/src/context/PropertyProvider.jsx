@@ -4,6 +4,7 @@ import getProperty from '../service/propertyApi'
 
 function PropertyProvider({children}) {
 const[property,setProperty] = useState([])
+const [loading,setloading]=useState(true)
   useEffect(  ()=>{
 
     async function fetchProperty() {
@@ -11,6 +12,7 @@ const[property,setProperty] = useState([])
     
     let data=await getProperty()
     setProperty(data)
+    setloading(false)
     }
     fetchProperty()
 
@@ -21,7 +23,7 @@ const[property,setProperty] = useState([])
   
   return (
 
-    <PropertyContext.Provider value={property}>
+    <PropertyContext.Provider value={{property,loading}}>
         {children}
     </PropertyContext.Provider>
     

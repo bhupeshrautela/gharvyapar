@@ -16,7 +16,6 @@ function Property() {
   
 
  }
- console.log(selectedData)
 
   return (
 
@@ -115,7 +114,7 @@ function Property() {
       <section className="flex  snap-ma gap-10 ">
         <div className="flex overflow-x-auto snap-start snap-mandatory scroll-smooth scrollbar-thumb-amber-200 scroll-m-5 snap-x">
        {selectedData.map((property)=>{
-        return <PropertyDetailsCard property={property}/>
+        return <PropertyDetailsCard property={property} key={property._id}/>
        })}
        </div>
       </section>

@@ -3,9 +3,13 @@ import PropertyContext from '../context/PropertyContext'
 import Hero from '../Components/Hero'
 import PropertyCard from '../Components/Cards/PropertyCard'
 
+import PropertySkeletonCard from '../Components/PropertySkeletonCard'
 function Home() {
-    const propertyData=useContext(PropertyContext)
-   console.log(propertyData)
+  const {property,loading}=useContext(PropertyContext)
+    const propertyData=property
+    console.log(property)
+  
+
    const delhiProperty=useMemo(()=>{
    return propertyData.filter((property)=>property.Location.includes("Delhi"))
   
@@ -34,9 +38,13 @@ function Home() {
           <p className='font-semibold text-3xl capitalize ml-4'>trending property</p>
         </div>
         <div className='flex overflow-x-scroll gap-4'>
-          {propertyData.map((property)=>{
-            return <PropertyCard property={property} key={property._id}/>
-          })}
+          {loading? (
+              <PropertySkeletonCard/>
+          ) :(
+            propertyData.map((property)=>{
+              return <PropertyCard property={property}/>
+            })
+          )}
         </div>
       </section>
 
@@ -46,9 +54,13 @@ function Home() {
           <p className='font-semibold text-3xl capitalize ml-4'>your city delhi</p>
         </div>
         <div className='flex overflow-x-scroll gap-4'>
-          {delhiProperty.map((property)=>{
-            return <PropertyCard property={property} key={property._id}/>
-          })}
+           {loading? (
+              <PropertySkeletonCard/>
+          ) :(
+            delhiProperty.map((property)=>{
+              return <PropertyCard property={property}/>
+            })
+          )}
         </div>
       </section>
 
@@ -57,9 +69,13 @@ function Home() {
           <p className='font-semibold text-3xl capitalize ml-4'>3 bhk house</p>
         </div>
         <div className='flex overflow-x-scroll gap-4'>
-          {bhk3Property.map((property)=>{
-            return <PropertyCard property={property} key={property._id}/>
-          })}
+          {loading? (
+              <PropertySkeletonCard/>
+          ) :(
+            bhk3Property.map((property)=>{
+              return <PropertyCard property={property}/>
+            })
+          )}
         </div>
       </section>
 
@@ -68,9 +84,13 @@ function Home() {
           <p className='font-semibold text-3xl capitalize ml-4'>under 1 crore</p>
         </div>
         <div className='flex overflow-x-scroll gap-4'>
-          {under1Cr.map((property)=>{
-            return <PropertyCard property={property} key={property._id}/>
-          })}
+          {loading? (
+              <PropertySkeletonCard/>
+          ) :(
+            under1Cr.map((property)=>{
+              return <PropertyCard property={property}/>
+            })
+          )}
         </div>
       </section>
       
