@@ -37,7 +37,7 @@ function NavbarBox({ children }) {
       </div>
 
       {/* Search */}
-      <SearchBar />
+      {/* <SearchBar /> */}
     </nav>
   );
 }

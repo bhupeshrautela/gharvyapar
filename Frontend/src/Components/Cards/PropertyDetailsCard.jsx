@@ -2,7 +2,7 @@ import React from "react";
 
 function PropertyDetailsCard({ property }) {
   return (
-    <div className="w-full overflow-hidden rounded-2xl bg-white shadow-xl shrink-0 snap-start snap-center scroll-m-4">
+    <div className="w-full overflow-hidden rounded-2xl bg-white shadow-xl shrink-0 snap-start scroll-m-4">
 
       {/* Property Image */}
       <div className="relative h-112.5 w-full bg-gray-200">

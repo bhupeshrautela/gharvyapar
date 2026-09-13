@@ -5,6 +5,7 @@ import About from './Pages/About'
 import MainLayout from './Layouts/MainLayout'
 import Property from './Pages/Property'
 import PropertyDetails from './Pages/PropertyDetails'
+import NotFound from './Components/NotFound'
 
 function AllLinkRoute() {
   return (
@@ -15,6 +16,7 @@ function AllLinkRoute() {
         <Route path='/property' element={<Property/>}>
         <Route path=':propertyId' element={<PropertyDetails/>}/>
         </Route>
+        <Route path='*' element={<NotFound/>}/>
         
         </Route>
         

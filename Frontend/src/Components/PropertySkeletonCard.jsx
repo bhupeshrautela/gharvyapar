@@ -12,6 +12,7 @@ function PropertySkeletonCard() {
       <div className="mt-3 h-4 w-1/2 rounded bg-gray-200"></div>
 
       {/* Details */}
+      
       <div className="mt-5 flex gap-3">
         <div className="h-5 w-16 rounded bg-gray-200"></div>
         <div className="h-5 w-16 rounded bg-gray-200"></div>

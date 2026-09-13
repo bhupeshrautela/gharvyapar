@@ -39,7 +39,7 @@ function Home() {
         </div>
         <div className='flex overflow-x-scroll gap-4'>
           {loading? (
-              <PropertySkeletonCard/>
+             <PropertySkeletonCard/>
           ) :(
             propertyData.map((property)=>{
               return <PropertyCard property={property}/>

@@ -1,13 +1,17 @@
-import React, { useEffect, useState, useTransition } from "react";
+import React, { useContext, useEffect, useState, useTransition } from "react";
 import { Outlet } from "react-router-dom";
-import PropertyDetails from "./PropertyDetails";
 import PropertyDetailsCard from "../Components/Cards/PropertyDetailsCard";
+import PropertyContext from "../context/PropertyContext";
+import PropertyCard from "../Components/Cards/PropertyCard";
+import PropertySkeletonCard from "../Components/PropertySkeletonCard";
 
 function Property() {
+  const data=useContext(PropertyContext)
   const [city,setCity]=useState("")
   const [price,setPrice]=useState("")
   const [bhk,setBhk]=useState("")
   const [selectedData,setSelectedDAta]=useState([])
+ 
   
  async function propertyHandle(){
   let response=await fetch(`https://gharvyapar.onrender.com/property/selectedproperty?city=${city}&price=${price}&bhk=${bhk}`)
@@ -112,10 +116,24 @@ function Property() {
       </section>
 
       <section className="flex  snap-ma gap-10 ">
-        <div className="flex overflow-x-auto snap-start snap-mandatory scroll-smooth scrollbar-thumb-amber-200 scroll-m-5 snap-x">
-       {selectedData.map((property)=>{
+        <div className="flex overflow-x-auto gap-5  snap-start snap-mandatory scroll-smooth scrollbar-thumb-amber-200 scroll-m-5 snap-x">
+
+      {!(selectedData.length===0)?
+
+       (selectedData.map((property)=>{
         return <PropertyDetailsCard property={property} key={property._id}/>
-       })}
+       }
+      )
+    )
+      :(  
+        data.loading?(
+          <PropertySkeletonCard/>
+        ):(
+          data.property.map((property)=>{
+            return <PropertyCard property={property} key={property._id}/>
+          })
+        )
+       )}
        </div>
       </section>
 
